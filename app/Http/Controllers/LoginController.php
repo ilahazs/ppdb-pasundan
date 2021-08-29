@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -21,8 +22,9 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            $request->session()->flash('successLogin', 'Login successfully!');
-            return redirect()->intended('/dashboard');
+            // $request->session()->flash('successLogin', 'Login successfully!');
+            // Session::flash('successLogin', 'Login successfully!');
+            return redirect()->intended('/dashboard')->with('successLogin', 'Login successfully!');
         }
 
         return back()->with(
