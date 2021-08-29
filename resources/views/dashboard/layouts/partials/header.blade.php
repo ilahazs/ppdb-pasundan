@@ -129,9 +129,12 @@
           </a>
        </li>
        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-             <i class="fas fa-th-large"></i>
-          </a>
+          <form action="/logout" method="POST">
+             @csrf
+             <button type="submit" class="nav-link px-3 border-0 bg-dark rounded">
+                Logout
+             </button>
+          </form>
        </li>
     </ul>
  </nav>

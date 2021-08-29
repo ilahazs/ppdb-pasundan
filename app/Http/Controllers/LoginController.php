@@ -21,6 +21,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            $request->session()->flash('successLogin', 'Login successfully!');
             return redirect()->intended('/dashboard');
         }
 

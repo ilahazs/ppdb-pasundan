@@ -18,9 +18,9 @@
 <body class="hold-transition sidebar-mini">
    <!-- Site wrapper -->
    <div class="wrapper">
-      @include('dashboard.layouts.navbar')
-      @include('dashboard.layouts.sidebar')
-      @include('dashboard.layouts.content')
+      @include('dashboard.layouts.partials.header')
+      @include('dashboard.layouts.partials.sidebar')
+      @include('dashboard.layouts.partials.content')
 
       @yield('container')
 
@@ -41,7 +41,6 @@
       </aside>
       <!-- /.control-sidebar -->
    </div>
-   <!-- ./wrapper -->
 
    <!-- jQuery -->
    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
