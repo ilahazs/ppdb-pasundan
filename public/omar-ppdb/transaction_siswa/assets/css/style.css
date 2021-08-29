@@ -1,0 +1,42 @@
+.table {
+    border: 1px solid;
+    width: 100vw;
+    height: 70vh;
+    overflow-y: scroll;
+    margin: 0 1rem;
+    position: relative;
+}
+
+.form {
+    width: 40%;
+    margin: 2rem 1rem;
+}
+
+.form-select {
+    margin: 0.5rem 0;
+}
+
+.table-item,
+.table-header {
+    display: flex;
+    margin: 0.5rem;
+    background: #ededff;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+
+.table-item p:nth-child(1),
+.table-heading p:nth-child(1) {
+    margin: 0 2rem;
+}
+
+.table-heading {
+    border: 1px solid #dee2e6;
+    border-bottom: none;
+    width: 100vw;
+    height: 50px;
+    margin: 0 1rem;
+    line-height: 50px;
+}

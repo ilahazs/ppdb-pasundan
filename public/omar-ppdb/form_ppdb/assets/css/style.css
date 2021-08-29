@@ -1,0 +1,27 @@
+.form-item {
+    display: flex;
+    margin: 1rem 0;
+}
+
+.form-item div {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+input,
+select {
+    height: 50px;
+}
+
+#bukti {
+    height: 38px;
+}
+
+.row1 div,
+.row2 div,
+.row3 div,
+.row4 div,
+.row5 div {
+    margin: 1rem;
+}
