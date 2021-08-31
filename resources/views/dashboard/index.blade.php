@@ -1,12 +1,13 @@
 @extends('dashboard.layouts.master')
 @section('container')
    @if (session()->has('successLogin'))
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-         {{ session('successLogin') }}
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="col-md-8">
+         <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('successLogin') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
       </div>
    @endif
-
    <section class="content">
 
       <!-- Default box -->

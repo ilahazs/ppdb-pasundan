@@ -9,12 +9,14 @@
             </div>
             <div class="col-sm-6">
                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a class="text-decoration-none text-dark"
-                        href="{{ $currlink ?? '#' }}">{{ $title ?? 'Home' }}</a></li>
-                  <li class="breadcrumb-item"><a class="text-decoration-none text-dark"
+                  <li class="breadcrumb-item"><a
+                        class="text-decoration-none {{ Request::is(Request::path()) ? 'text-secondary' : '' }}"
+                        {{-- Request::path = dashboard, Request::url = x.test/dashboard --}} href="#">{{ $title }}</a></li>
+
+                  <li class="breadcrumb-item"><a class="text-decoration-none"
                         href="{{ $prevlink ?? '/dashboard/students' }}">{{ $prevpage ?? 'Students' }}</a></li>
                </ol>
             </div>
          </div>
-      </div><!-- /.container-fluid -->
+      </div>
    </section>

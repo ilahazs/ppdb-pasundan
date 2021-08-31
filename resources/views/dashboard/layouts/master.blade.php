@@ -7,8 +7,8 @@
    <title>{{ config('app.name') }} | Home Page</title>
 
    <!-- Google Font: Source Sans Pro -->
-   <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+   {{-- <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> --}}
    {{-- Icon --}}
    <link rel="icon" href="{{ asset('img/arch.svg') }}">
    <!-- Font Awesome -->
@@ -27,24 +27,22 @@
       @include('dashboard.layouts.partials.sidebar')
       @include('dashboard.layouts.partials.content')
 
-      <div class="container">
+      {{-- @yield('container') --}}
+      <div class="container-fluid">
          <div class="row">
-            <main class="col-md-12 col-lg-12">
+            <main class="col-md-9 col-lg-12">
                @yield('container')
             </main>
+
          </div>
       </div>
 
+      @include('dashboard.layouts.partials.footer')
 
 
 
 
-      <footer class="main-footer">
-         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.1.0
-         </div>
-         <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-      </footer>
+
 
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">

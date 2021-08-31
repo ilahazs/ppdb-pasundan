@@ -38,8 +38,18 @@
             <!-- Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library -->
             <li class="nav-item">
-               <a href="/dashboard/students" class="nav-link">
-                  <i class="nav-icon fas fa-person-booth"></i>
+               <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-meteor"></i>
+                  <p>
+                     Dashboard
+                     <span class="right badge badge-info">!</span>
+                  </p>
+               </a>
+            </li>
+            <li class="nav-item">
+
+               <a href="dashboard/students" class="nav-link {{ Request::is('dashboard/students*') ? 'active' : '' }}"">
+                  <i class=" nav-icon fas fa-person-booth"></i>
                   <p>
                      Students
                      <span class="right badge badge-danger">!</span>

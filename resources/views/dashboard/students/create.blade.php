@@ -1,11 +1,10 @@
 @extends('dashboard.layouts.master')
 @section('container')
 
-
-   <div class="container-fluid">
+   <div class="container">
       {{-- <div class="header">
-         <h4>{{ __('Add New Student') }}</h4>
-      </div> --}}
+      <h4>{{ __('Add New Student') }}</h4>
+   </div> --}}
       <!-- form group -->
       <div class="form">
 
@@ -13,7 +12,7 @@
          <div class="form-item row1">
             <div class="mb-3">
                <label for="nama-lengkap" class="form-label">Nama Lengkap</label>
-               <input type="text" class="form-control" id="nama-lengkap" placeholder="Nama Lengkap">
+               <input type="text" class="form-control" id="nama-lengkap" placeholder="Nama Lengkap" name="nama">
             </div>
          </div>
 
@@ -22,13 +21,13 @@
 
             <div class="mb-3">
                <label for="nomor-telepon" class="form-label">Nomor Telepon</label>
-               <input type="number" class="form-control" id="nomor-telepon" placeholder="Nomor Telepon">
+               <input type="number" class="form-control" id="nomor-telepon" placeholder="Nomor Telepon" name="telp">
             </div>
 
             <div class="form-jenis-kelamin">
                <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
-               <select class="form-select jenis-kelamin" id="jenisKelamin" aria-label="jenis kelamin">
-                  <option selected>Jenis Kelamin</option>
+               <select class="form-select jenis-kelamin" id="jenisKelamin" aria-label="jenis kelamin" name="jenis_kelamin">
+                  <option selected disabled>Jenis Kelamin</option>
                   <option value="L">Laki - Laki</option>
                   <option value="P">Perempuan</option>
                </select>
@@ -41,12 +40,12 @@
 
             <div class="mb-3">
                <label for="tempat-lahir" class="form-label">Tempat Lahir</label>
-               <input type="text" class="form-control" id="tempat-lahir" placeholder="Tempat Lahir">
+               <input type="text" class="form-control" id="tempat-lahir" placeholder="Tempat Lahir" name="tempat_lahir">
             </div>
 
             <div class="mb-3">
                <label for="tanggal-lahir" class="form-label">Tanggal Lahir</label>
-               <input type="date" class="form-control" id="tanggal-lahir" placeholder="Tanggal Lahir">
+               <input type="date" class="form-control" id="tanggal-lahir" placeholder="Tanggal Lahir" name="tanggal_lahir">
             </div>
 
          </div>
@@ -56,7 +55,7 @@
 
             <div class="form-agama">
                <label for="agama" class="form-label">Agama</label>
-               <select class="form-select agama" id="agama" aria-label="agama">
+               <select class="form-select agama" id="agama" aria-label="agama" name="agama">
                   <option selected>Jenis Kelamin</option>
                   <option value="islam">Islam</option>
                   <option value="katholik">Katholik</option>
@@ -69,7 +68,7 @@
             <div class="form-jalur-pendaftaran">
                <label for="jalurPendaftaran" class="form-label">Jalur Pendaftaran</label>
                <select class="form-select jalur-pendaftaran" id="jalurPendaftaran" aria-label="jalur pendaftaran"
-                  onchange="showForm()">
+                  onchange="showForm()" name="jalur-pendaftaran">
                   <option selected value="0">Jalur Pendaftaran</option>
                   <option value="umum">Umum</option>
                   <option value="prestasi">Prestasi</option>
@@ -85,7 +84,7 @@
             <div class="mb-3">
                <label for="bukti" class="form-label">Bukti <span id="ket"></span></label>
                <input type="file" class="form-control" id="bukti"
-                  placeholder="Bukti penghargaan/prestasi atau surat rekomendasi RMP">
+                  placeholder="Bukti penghargaan/prestasi atau surat rekomendasi RMP" name="bukti">
             </div>
 
          </div>
@@ -120,6 +119,7 @@
          }
       }
    </script>
+
 
 
 @endsection

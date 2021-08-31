@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        // dd(Student::all());
-        return view('dashboard.students.index', [
-            'title' => 'Students',
-            'students' => Student::all(),
-            'prevpage' => 'Home',
-            'prevlink' => '/dashboard'
-        ]);
+        //
     }
 
     /**
@@ -30,11 +24,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('dashboard.students.create', [
-            'title' => 'Add New Students',
-            'prevpage' => 'Students',
-            'prevlink' => '/dashboard/students'
-        ]);
+        //
     }
 
     /**
@@ -51,10 +41,10 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Role $role)
     {
         //
     }
@@ -62,10 +52,10 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Role $role)
     {
         //
     }
@@ -74,10 +64,10 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Role $role)
     {
         //
     }
@@ -85,10 +75,10 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Role $role)
     {
         //
     }

@@ -32,7 +32,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // Dashboard
 Route::get('/dashboard', function () {
-    return view('dashboard/index', ['title' => 'Home']);
+    return view('dashboard/index', ['title' => 'Home', 'content' => 'home']);
 })->middleware('auth');
 
-Route::resource('/dashboard/students', StudentController::class);
+Route::resource('/dashboard/students', StudentController::class)->middleware('auth');
