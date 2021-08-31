@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PathRegistration;
+use App\Models\Religion;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -32,6 +34,8 @@ class StudentController extends Controller
     {
         return view('dashboard.students.create', [
             'title' => 'Add New Students',
+            'religions' => Religion::all(),
+            'paths' => PathRegistration::all(),
             'prevpage' => 'Students',
             'prevlink' => '/dashboard/students'
         ]);

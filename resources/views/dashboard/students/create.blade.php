@@ -4,9 +4,10 @@
    <div class="container">
       {{-- <div class="header">
       <h4>{{ __('Add New Student') }}</h4>
-   </div> --}}
+      </div> --}}
       <!-- form group -->
-      <div class="form">
+      <form action="/dashboard/students" method="post">
+
 
 
          <div class="form-item row1">
@@ -56,12 +57,16 @@
             <div class="form-agama">
                <label for="agama" class="form-label">Agama</label>
                <select class="form-select agama" id="agama" aria-label="agama" name="agama">
-                  <option selected>Jenis Kelamin</option>
-                  <option value="islam">Islam</option>
+                  <option selected disabled>Jenis Kelamin</option>
+                  @foreach ($religions as $religion)
+                     <option value="{{ $religion->name }}">{{ $religion->name }}</option>
+
+                  @endforeach
+                  {{-- <option value="islam">Islam</option>
                   <option value="katholik">Katholik</option>
                   <option value="protestan">Protestan</option>
                   <option value="hindu">Hindu</option>
-                  <option value="budha">Budha</option>
+                  <option value="budha">Budha</option> --}}
                </select>
             </div>
 
@@ -69,10 +74,11 @@
                <label for="jalurPendaftaran" class="form-label">Jalur Pendaftaran</label>
                <select class="form-select jalur-pendaftaran" id="jalurPendaftaran" aria-label="jalur pendaftaran"
                   onchange="showForm()" name="jalur-pendaftaran">
-                  <option selected value="0">Jalur Pendaftaran</option>
-                  <option value="umum">Umum</option>
-                  <option value="prestasi">Prestasi</option>
-                  <option value="rmp">RMP</option>
+                  <option selected disabled>Jalur Pendaftaran</option>
+                  @foreach ($paths as $path)
+                     <option value="{{ $path->name }}">{{ $path->name }}</option>
+
+                  @endforeach
                </select>
             </div>
 
@@ -94,8 +100,8 @@
             <!--maps belum-->
          </div>
 
-
-      </div>
+      </form>
+   </div>
 
 
    </div>
