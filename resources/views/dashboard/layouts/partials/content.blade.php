@@ -9,8 +9,10 @@
             </div>
             <div class="col-sm-6">
                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">{{ $title }}</a></li>
-                  <li class="breadcrumb-item active">Master Data</li>
+                  <li class="breadcrumb-item"><a class="text-decoration-none text-dark"
+                        href="{{ $currlink ?? '#' }}">{{ $title ?? 'Home' }}</a></li>
+                  <li class="breadcrumb-item"><a class="text-decoration-none text-dark"
+                        href="{{ $prevlink ?? '/dashboard/students' }}">{{ $prevpage ?? 'Students' }}</a></li>
                </ol>
             </div>
          </div>

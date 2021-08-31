@@ -24,10 +24,10 @@
                @csrf
                <div class="form-floating">
                   <input type="email" class="form-control @error('email')
-                                                    is-invalid
-                                 @enderror" id="email" name="email" placeholder="name@example.com" required autofocus
-                     value="{{ old('email') }}">
-                  <label for="email">Email address</label>
+                                                                      is-invalid
+                                          @enderror" id="email" name="email" placeholder="name@example.com" required
+                     autofocus value="{{ old('email') }}">
+                  <label for="email">{{ __('Email address') }}</label>
                   @error('email')
                      <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
@@ -35,7 +35,7 @@
                <div class="form-floating mb-3">
                   <input type="password" class="form-control" id="password" name="password" placeholder="Password"
                      required>
-                  <label for="password">Password</label>
+                  <label for="password">{{ __('Password') }}</label>
                   @error('password')
                      <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
@@ -43,8 +43,8 @@
 
                <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
             </form>
-            <small class="my-4 d-block text-center">Not registered? <a href="/register"
-                  class="text-decoration-none">Register Here!</a></small>
+            <small class="my-4 d-block text-center">{{ __('Not registered? ') }}<a href="/register"
+                  class="text-decoration-none">{{ __('Register Here!') }}</a></small>
          </main>
       </div>
    </div>
