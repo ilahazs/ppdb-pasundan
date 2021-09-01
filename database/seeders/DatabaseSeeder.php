@@ -19,20 +19,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(3)->create();
-        Student::factory(20)->create();
+        Student::factory(30)->create();
 
         Role::create([
             'name' => 'Guest',
         ]);
 
         PathRegistration::create([
-            'name' => 'RMP',
-        ]);
-        PathRegistration::create([
             'name' => 'Umum',
         ]);
         PathRegistration::create([
             'name' => 'Prestasi',
+        ]);
+        PathRegistration::create([
+            'name' => 'RMP',
         ]);
 
         Religion::create([

@@ -2,9 +2,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
    <!-- Brand Logo -->
    <a href="assets/index3.html" class="brand-link text-decoration-none">
-      {{-- <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-         style="opacity: .8"> --}}
-      <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
+      <span class="brand-text font-weight-light ml-0">{{ config('app.name') }}</span>
+      <img src="{{ asset('img/logo.png') }}" alt="{{ config('app.name') . __(' Logo') }}"
+         class="brand-image img-circle elevation-1">
    </a>
 
    <!-- Sidebar -->
@@ -49,7 +49,7 @@
             <li class="nav-item">
 
                <a href="/dashboard/students" class="nav-link {{ Request::is('dashboard/students*') ? 'active' : '' }}"">
-                  <i class=" nav-icon fas fa-person-booth"></i>
+                  <i class="            nav-icon fas fa-person-booth"></i>
                   <p>
                      Students
                      <span class="right badge badge-danger">!</span>

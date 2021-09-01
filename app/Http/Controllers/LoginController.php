@@ -22,13 +22,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            // $request->session()->flash('successLogin', 'Login successfully!');
-            // Session::flash('successLogin', 'Login successfully!');
-            return redirect()->intended('/dashboard')->with('successLogin', 'Login successfully!');
+            return redirect()->intended('/dashboard')->with('status', 'Login successfully!');
         }
 
         return back()->with(
-            'loginError',
+            'statusError',
             'Login Failed! Incorrect an email/password',
         );
     }
@@ -39,6 +37,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('successLogout', 'Logout successfully!');
+        return redirect('/')->with('status', 'Logout successfully!');
     }
 }

@@ -19,7 +19,7 @@ class StudentController extends Controller
         // dd(Student::all());
         return view('dashboard.students.index', [
             'title' => 'Students',
-            'students' => Student::all(),
+            'students' => Student::latest()->get(),
             'prevpage' => 'Home',
             'prevlink' => '/dashboard'
         ]);
@@ -49,7 +49,19 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'telp' => ['required', 'max:30', 'unique:students'],
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required|max:255',
+            'tanggal_lahir' => 'required',
+            'religion_id' => 'required',
+            'path_id' => 'required',
+            'role_id' => 'required',
+        ]);
+
+        Student::create($validatedData);
+        return redirect('/dashboard/students')->with('status', 'New student has been added!');
     }
 
     /**
@@ -60,7 +72,12 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return view('dashboard.students.show', [
+            'title' => 'Detail Student',
+            'student' => $student,
+            'prevpage' => 'Student',
+            'prevlink' => '/dashboard/students'
+        ]);
     }
 
     /**
@@ -71,7 +88,15 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('dashboard.students.edit', [
+            'title' => 'Edit Student',
+            // 'detailtitle' => 'Edit Student: ' . $student->nama,
+            'student' => $student,
+            'religions' => Religion::all(),
+            'paths' => PathRegistration::all(),
+            'prevpage' => 'Students',
+            'prevlink' => '/dashboard/students'
+        ]);
     }
 
     /**
@@ -94,6 +119,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        Student::destroy($student->id);
+        return redirect('/dashboard/students')->with('status', 'Student <strong>' . $student->nama . '</strong> has been deleted!');
     }
 }

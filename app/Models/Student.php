@@ -11,6 +11,7 @@ class Student extends Model
 
     protected $guarded = ['id'];
     protected $with = ['religion', 'path', 'role'];
+    // protected $table = 'siswa';
 
 
     public function religion()

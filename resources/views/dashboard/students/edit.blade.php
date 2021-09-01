@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.master')
 @section('container')
 
+
    <div class="container">
       <div class="row mt-3">
          <div class="col-lg-8 px-4">
@@ -11,7 +12,7 @@
                   <div class="mb-3">
                      <label for="nama-lengkap" class="form-label">Nama Lengkap</label>
                      <input type="text" class="form-control @error('nama') is-invalid @enderror" id=" nama-lengkap"
-                        placeholder="Nama Lengkap" name="nama" value="{{ old('nama') }}" required autofocus>
+                        placeholder="Nama Lengkap" name="nama" value="{{ $student->nama }}" required autofocus>
                      @error('nama')
                         <div class="invalid-feedback">
                            {{ $message }}
@@ -24,7 +25,7 @@
                   <div class="mb-3">
                      <label for="nomor-telepon" class="form-label">Nomor Telepon</label>
                      <input type="number" class="form-control @error('telp') is-invalid @enderror" id="nomor-telepon"
-                        placeholder="Nomor Telepon" name="telp" value="{{ old('telp') }}" required>
+                        placeholder="Nomor Telepon" name="telp" value="{{ $student->telp }}" required>
                      @error('telp')
                         <div class="invalid-feedback">
                            {{ $message }}
@@ -37,9 +38,13 @@
                         <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
                         <select class="form-select jenis-kelamin @error('jenis_kelamin') is-invalid @enderror"
                            id="jenisKelamin" aria-label="jenis kelamin" name="jenis_kelamin">
-                           <option selected disabled>Jenis Kelamin</option>
-                           <option value="Laki-laki">Laki - Laki</option>
-                           <option value="Perempuan">Perempuan</option>
+                           <option disabled>Jenis Kelamin</option>
+                           <option value="Laki-laki" {{ $student->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>
+                              Laki - Laki
+                           </option>
+                           <option value="Perempuan" {{ $student->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>
+                              Perempuan
+                           </option>
                         </select>
                         @error('jenis_kelamin')
                            <div class="invalid-feedback">
@@ -55,7 +60,7 @@
                   <div class="mb-3">
                      <label for="tempat-lahir" class="form-label">Tempat Lahir</label>
                      <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat-lahir"
-                        placeholder="Tempat Lahir" name="tempat_lahir" value="{{ old('telp') }}" required>
+                        placeholder="Tempat Lahir" name="tempat_lahir" value="{{ $student->tempat_lahir }}" required>
                      @error('tempat_lahir')
                         <div class="invalid-feedback">
                            {{ $message }}
@@ -66,7 +71,7 @@
                   <div class="mb-3">
                      <label for="tanggal-lahir" class="form-label">Tanggal Lahir</label>
                      <input type="date" class="form-control @error('tempat_lahir') is-invalid @enderror" id="tanggal-lahir"
-                        placeholder="Tanggal Lahir" name="tanggal_lahir" value="{{ old('telp') }}" required>
+                        placeholder="Tanggal Lahir" name="tanggal_lahir" value="{{ $student->tanggal_lahir }}" required>
                      @error('tanggal_lahir')
                         <div class="invalid-feedback">
                            {{ $message }}

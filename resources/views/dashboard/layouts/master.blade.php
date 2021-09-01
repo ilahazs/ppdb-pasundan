@@ -27,17 +27,17 @@
       @include('dashboard.layouts.partials.sidebar')
       @include('dashboard.layouts.partials.content')
 
-      {{-- @yield('container') --}}
-      <div class="container-fluid">
+      @yield('container')
+      {{-- <div class="container">
          <div class="row">
-            <main class="col-md-9 col-lg-12">
+            <main class="col-md-9 col-lg-12 px-4">
                @yield('container')
             </main>
 
          </div>
-      </div>
+      </div> --}}
 
-      @include('dashboard.layouts.partials.footer')
+      {{-- @include('dashboard.layouts.partials.footer') --}}
 
 
 
@@ -53,6 +53,8 @@
 
    <!-- jQuery -->
    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+   {{-- Sweet Alert --}}
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <!-- Bootstrap -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">

@@ -4,16 +4,16 @@
    <div class="row justify-content-center mt-5">
       <div class="col-lg-4">
 
-         @if (session()->has('success'))
+         @if (session()->has('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-               {{ session('success') }}
+               {!! session('status') !!}
                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
          @endif
 
-         @if (session()->has('loginError'))
+         @if (session()->has('statusError'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-               {{ session('loginError') }}
+               {{ session('statusError') }}
                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
          @endif
@@ -23,10 +23,12 @@
             <form action="/login" method="POST">
                @csrf
                <div class="form-floating">
-                  <input type="email" class="form-control @error('email')
+                  <input type="email"
+                     class="form-control @error('email')
                                                                       is-invalid
-                                          @enderror" id="email" name="email" placeholder="name@example.com" required
-                     autofocus value="{{ old('email') }}">
+                                          @enderror"
+                     id="email" name="email" placeholder="name@example.com" required autofocus
+                     value="{{ old('email') }}">
                   <label for="email">{{ __('Email address') }}</label>
                   @error('email')
                      <div class="invalid-feedback">{{ $message }}</div>
