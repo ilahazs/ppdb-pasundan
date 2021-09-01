@@ -20,6 +20,8 @@ class StudentController extends Controller
         return view('dashboard.students.index', [
             'title' => 'Students',
             'students' => Student::latest()->get(),
+            'religions' => Religion::all(),
+            'paths' => PathRegistration::all(),
             'prevpage' => 'Home',
             'prevlink' => '/dashboard'
         ]);

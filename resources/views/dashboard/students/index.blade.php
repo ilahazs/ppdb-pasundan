@@ -15,7 +15,10 @@
             @endif
 
             <div class="d-flex justify-content-end">
-               <a href="/dashboard/students/create" class="badge bg-primary mb-3"><i class="fas fa-plus"></i></a>
+               {{-- <a href="/dashboard/students/create" class="badge bg-primary mb-3"><i class="fas fa-plus"></i></a> --}}
+               <a href="#" class="badge bg-primary mb-3" data-bs-toggle="modal" data-bs-target="#ModalCreate"><i
+                     class="fas fa-plus"></i></a>
+
             </div>
             <ul class="list-group">
                @foreach ($students as $student)
@@ -23,11 +26,13 @@
                      {{ $student->nama }}
 
                      <div class="justify-content-end">
-                        <a href="/dashboard/students/{{ $student->id }}" class="badge bg-info"><i
-                              class="far fa-eye"></i></a>
-                        <a href="/dashboard/students/{{ $student->id }}/edit" class="badge bg-success"><i
-                              class="far fa-edit "></i></a> {{-- fas fa-user-edit --}}
-                        <form action="/dashboard/students/{{ $student->id }}" method="post" class="d-inline">
+                        <a href="#" class="badge bg-info" data-bs-toggle="modal"
+                           data-bs-target="#ModalShow{{ $student->id }}"><i class="far fa-eye"></i></a>
+                        <a href="#" class="badge bg-success" data-bs-toggle="modal"
+                           data-bs-target="#ModalEdit{{ $student->id }}"><i class="far fa-edit "></i></a>
+                        {{-- fas fa-user-edit --}}
+                        <form action="/dashboard/students/{{ $student->id }}" method="post" class="d-inline"
+                           onsubmit="return confirm('Yakin hapus data ini?')">
                            @method('delete')
                            @csrf
                            <button type="submit" class="badge bg-danger" id="show_confirm" data-toggle="tooltip"
@@ -37,34 +42,18 @@
                         </form>
                      </div>
                   </li>
+                  @include('dashboard.students.modal.show')
+                  @include('dashboard.students.modal.edit')
+                  @include('dashboard.students.modal.create')
+
                @endforeach
             </ul>
 
          </div>
       </div>
+
+
+
    </div>
 
-   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   <script>
-      $('#show_confirm').click(function(event) {
-
-         var form = $(this).closest("form");
-         var name = $(this).data("nama");
-         event.preventDefault();
-
-         swal({
-               title: `Are you sure you want to delete this record?`,
-               text: "If you delete this, it will be gone forever.",
-               icon: "warning",
-               buttons: true,
-               dangerMode: true,
-            })
-
-            .then((willDelete) => {
-               if (willDelete) {
-                  form.submit();
-               }
-            });
-      });
-   </script>
 @endsection
