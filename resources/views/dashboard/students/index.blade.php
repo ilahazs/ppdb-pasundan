@@ -18,6 +18,10 @@
                {{-- <a href="/dashboard/students/create" class="badge bg-primary mb-3"><i class="fas fa-plus"></i></a> --}}
                <a href="#" class="badge bg-primary mb-3" data-bs-toggle="modal" data-bs-target="#ModalCreate"><i
                      class="fas fa-plus"></i></a>
+               @include('dashboard.students.modal.create')
+
+
+
 
             </div>
             <ul class="list-group">
@@ -42,15 +46,23 @@
                         </form>
                      </div>
                   </li>
+
                   @include('dashboard.students.modal.show')
                   @include('dashboard.students.modal.edit')
-                  @include('dashboard.students.modal.create')
+
+
+
+
 
                @endforeach
             </ul>
 
+
          </div>
       </div>
+
+      <script src="{{ asset('js/form-ppdb.js') }}"></script>
+
 
 
 
