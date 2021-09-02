@@ -9,20 +9,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
          <div class="modal-body">
-            {{-- <div class="card">
-               <ul class="list-group list-group-flush">
-                  <li class="list-group-item">{{ $student->nama }}</li>
-                  <li class="list-group-item">{{ $student->telp }}</li>
-                  <li class="list-group-item">{{ $student->jenis_kelamin }}</li>
-                  <li class="list-group-item">{{ $student->tempat_lahir }}</li>
-                  <li class="list-group-item">{{ $student->tanggal_lahir }}</li>
-                  <li class="list-group-item">{{ $student->religion->name }}</li>
-                  <li class="list-group-item">{{ $student->path->name }}</li>
-               </ul>
-               <div class="card-footer">
-                  Card footer
-               </div>
-            </div> --}}
             <div class="card mb-3">
                <div class="row">
                   <div class="col-md-3">
@@ -44,8 +30,7 @@
             </div>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
          </div>
       </div>
    </div>

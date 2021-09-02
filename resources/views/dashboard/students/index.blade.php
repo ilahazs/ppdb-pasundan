@@ -34,6 +34,8 @@
                            data-bs-target="#ModalShow{{ $student->id }}"><i class="far fa-eye"></i></a>
                         <a href="#" class="badge bg-success" data-bs-toggle="modal"
                            data-bs-target="#ModalEdit{{ $student->id }}"><i class="far fa-edit "></i></a>
+                        {{-- <a href="/dashboard/students/{{ $student->id }}/edit" class="badge bg-success">
+                           <i class="far fa-edit"></i></a> --}}
                         {{-- fas fa-user-edit --}}
                         <form action="/dashboard/students/{{ $student->id }}" method="post" class="d-inline"
                            onsubmit="return confirm('Yakin hapus data ini?')">

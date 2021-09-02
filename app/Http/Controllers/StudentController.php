@@ -53,7 +53,7 @@ class StudentController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
-            'telp' => ['required', 'max:30', 'unique:students'],
+            'telp' => ['required', 'max:30', 'unique:students', 'min:10'],
             'jenis_kelamin' => 'required',
             'tempat_lahir' => 'required|max:255',
             'tanggal_lahir' => 'required',
@@ -63,7 +63,7 @@ class StudentController extends Controller
         ]);
 
         Student::create($validatedData);
-        return redirect('/dashboard/students')->with('status', 'New student has been added!');
+        return redirect('/dashboard/students')->with('status', 'New student <strong>' . $request->nama . '</strong> has been added!');
     }
 
     /**
@@ -92,7 +92,6 @@ class StudentController extends Controller
     {
         return view('dashboard.students.edit', [
             'title' => 'Edit Student',
-            // 'detailtitle' => 'Edit Student: ' . $student->nama,
             'student' => $student,
             'religions' => Religion::all(),
             'paths' => PathRegistration::all(),
@@ -110,7 +109,29 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $request->validate([
+            'nama' => 'required|max:255',
+            'telp' => ['required', 'max:30', 'min:10'],
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required|max:255',
+            'tanggal_lahir' => 'required',
+            'religion_id' => 'required',
+            'path_id' => 'required',
+            'role_id' => 'required',
+        ]);
+
+        Student::where('id', $student->id)->update([
+            'nama' => $request->nama,
+            'telp' => $request->telp,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'religion_id' => $request->religion_id,
+            'path_id' => $request->path_id,
+            'role_id' => $request->role_id,
+        ]);
+
+        return redirect('/dashboard/students')->with('status', 'Data student <strong>' . $student->nama . '</strong> has been changed!');
     }
 
     /**

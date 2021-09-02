@@ -1,8 +1,9 @@
 <!-- Modal -->
-<form action="/dashboard/students" method="post" enctype="multipart/form-data">
+<form action="/dashboard/students/{{ $student->id }}" method="post" enctype="multipart/form-data">
+   @method('patch')
    @csrf
 
-   <div class="modal fade text-left" id="ModalEdit{{ $student->id }}" data-bs-backdrop="static"
+   <div class="modal modal-edit fade text-left" id="ModalEdit{{ $student->id }}" data-bs-backdrop="static"
       data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalEdit{{ $student->id }}Label" aria-hidden="true">
       <div class="modal-dialog modal-lg">
          <div class="modal-content">
@@ -42,6 +43,9 @@
                                  <div class="invalid-feedback">
                                     {{ $message }}
                                  </div>
+                                 <script>
+                                    $(this).modal('show');
+                                 </script>
                               @enderror
                            </div>
 
@@ -97,12 +101,14 @@
 
                         <div class="form-item row4 row">
                            <div class="form-agama col-lg-6">
-                              <label for="agama" class="form-label">Agama</label>
-                              <select class="form-select agama @error('agama') is-invalid @enderror" id="agama"
-                                 aria-label="agama" name="religion_id">
-                                 <option selected disabled>Agama</option>
+                              <label for="religion_id" class="form-label">Agama</label>
+                              <select class="form-select religion_id @error('religion_id') is-invalid @enderror"
+                                 id="religion_id" aria-label="religion_id" name="religion_id">
+                                 <option disabled>Agama</option>
                                  @foreach ($religions as $religion)
-                                    <option value="{{ $religion->id }}">{{ $religion->name }}</option>
+                                    <option value="{{ $religion->id }}"
+                                       {{ $student->religion_id === $religion->id ? 'selected' : '' }}>
+                                       {{ $religion->name }}</option>
                                  @endforeach
                               </select>
                               @error('religion_id')
@@ -115,11 +121,14 @@
                            <div class="form-jalur-pendaftaran col-lg-6">
                               <label for="jalurPendaftaran" class="form-label">Jalur Pendaftaran</label>
                               <select class="form-select jalur-pendaftaran @error('path_id') is-invalid @enderror"
-                                 id="jalurPendaftaran" aria-label="jalur pendaftaran" onchange="showForm()"
+                                 id="jalurPendaftaran" aria-label="jalur-pendaftaran" onchange="showForm()"
                                  name="path_id">
-                                 <option selected disabled>Jalur Pendaftaran</option>
+                                 <option disabled>Jalur Pendaftaran</option>
                                  @foreach ($paths as $path)
-                                    <option value="{{ $path->id }}">{{ $path->name }}</option>
+                                    <option value="{{ $path->id }}"
+                                       {{ $student->path_id === $path->id ? 'selected' : '' }}>
+                                       {{ $path->name }}
+                                    </option>
 
                                  @endforeach
                               </select>
@@ -158,9 +167,27 @@
                <div class="justify-content-end d-flex my-2">
                   <button type="submit" class="btn btn-primary">Submit</button>
                </div>
+
             </div>
          </div>
       </div>
+
+      @if (Session::has('errors'))
+         <script type="text/javascript">
+            $(document).ready(function() {
+               $('.modal-edit').modal({
+                  show: true
+               });
+            });
+            // $(document).ready(function()$('#modal').modal('show');            
+         </script>
+      @endif
+
+
+
+
    </div>
+
+
 
 </form>
