@@ -149,8 +149,7 @@
                      </div>
                   </div>
                </div>
-            </div>
-            {{-- End of modal body --}}
+            </div> {{-- End of modal body --}}
 
 
             <div class="modal-footer">
