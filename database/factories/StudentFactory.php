@@ -23,24 +23,15 @@ class StudentFactory extends Factory
     {
         return [
             'nama' => $this->faker->name(),
+            'kelas' => $this->faker->randomElement(['1A', '1B', '1C']),
             'telp' => $this->faker->unique()->phoneNumber(),
             'jenis_kelamin' => 'perempuan',
             'tempat_lahir' => $this->faker->city(),
             'tanggal_lahir' => $this->faker->date(),
             'religion_id' => mt_rand(1, 5),
+            'status' => $this->faker->randomElement(['accepted', 'pending']),
             'role_id' => 1,
-            'path_id' => mt_rand(1, 3),
-
-            // $table->id();
-            // $table->foreignId('religion_id');
-            // $table->foreignId('role_id');
-            // // $table->foreignId('user_id');
-            // $table->foreignId('path_id');
-            // $table->string('nama');
-            // $table->string('telp', 13)->unique();
-            // $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
-            // $table->string('tempat_lahir');
-            // $table->date('tanggal_lahir');
+            'regmethod_id' => mt_rand(1, 3),
         ];
     }
 }

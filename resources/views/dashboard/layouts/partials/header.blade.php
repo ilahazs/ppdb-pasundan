@@ -3,53 +3,48 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          <a class="nav-link" data-widget="pushmenu" data-enable-remember='true'
+             data-no-transition-after-reload='true' href="#" role="button"><i class="fas fa-bars"></i></a>
        </li>
        <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{ url('/dashboard') }}" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">Home</a>
+          <a href="{{ url('/dashboard') }}"
+             class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">{{ __('Home') }}</a>
        </li>
        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
+          <a href="{{ route('students.index') }}"
+             class="nav-link {{ Request::is('dashboard/students*') ? 'active' : '' }}">{{ __('Students') }}</a>
+       </li>
+       <li class="nav-item d-none d-sm-inline-block">
+          <a href="{{ route('transaction.index') }}"
+             class="nav-link {{ Request::is('dashboard/transaction*') ? 'active' : '' }}">{{ __('Transaction') }}</a>
        </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-       <!-- Navbar Search -->
-       <li class="nav-item">
-          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-             <i class="fas fa-search"></i>
-          </a>
-          <div class="navbar-search-block">
-             <form class="form-inline">
-                <div class="input-group input-group-sm">
-                   <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                      aria-label="Search">
-                   <div class="input-group-append">
-                      <button class="btn btn-navbar" type="submit">
-                         <i class="fas fa-search"></i>
-                      </button>
-                      <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                         <i class="fas fa-times"></i>
-                      </button>
-                   </div>
-                </div>
-             </form>
-          </div>
-       </li>
 
-       <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-             <i class="fas fa-expand-arrows-alt"></i>
+       <li class="nav-item dropdown pl-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+             {{ auth()->user()->name }}
           </a>
-       </li>
-       <li class="nav-item">
-          <form action="/logout" method="POST">
-             @csrf
-             <button class="nav-link border-0 btn-success rounded text-white">
-                Logout
-             </button>
-          </form>
+          <ul class="dropdown-menu dropdown-menu-dark">
+             {{-- <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-sidebar-reverse"> </i>My
+                   Dashboard</a>
+             </li>
+             <li>
+                <hr class="dropdown-divider">
+             </li> --}}
+             <li>
+                <form action="{{ route('logout') }}" method="POST">
+                   @csrf
+                   <button type="submit" class="dropdown-item">
+                      <i class="bi bi-box-arrow-in-left"> </i>Logout
+                   </button>
+                </form>
+             </li>
+
+          </ul>
        </li>
     </ul>
  </nav>

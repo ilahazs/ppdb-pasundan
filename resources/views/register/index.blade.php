@@ -1,60 +1,112 @@
-@extends('layouts/main')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('container')
-   <div class="row justify-content-center mt-5">
-      <div class="col-lg-5">
-         <main class="form-registration">
-            <h1 class="h3 mb-4 fw-normal text-center">Register</h1>
-            <form method="POST" action="/register">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>AdminLTE 3 | Registration Page (v2)</title>
+
+   <!-- Google Font: Source Sans Pro -->
+   <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href={{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}>
+   <!-- icheck bootstrap -->
+   <link rel="stylesheet" href={{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}>
+   <!-- Theme style -->
+   <link rel="stylesheet" href={{ asset('assets/dist/css/adminlte.min.css') }}>
+</head>
+
+<body class="hold-transition register-page">
+   <div class="register-box">
+      <div class="card card-outline card-primary">
+         <div class="card-header text-center">
+            <a href="{{ route('home') }}" class="h1">Register</a>
+         </div>
+         <div class="card-body">
+            <p class="login-box-msg">Register a new membership</p>
+
+            <form action="{{ route('register-authenticate') }}" method="POST">
                @csrf
-               {{-- <img class="mb-4 text-center" src="{{ asset('img/slack.png  ') }}" alt="logo" width="72"
-                height="77"> --}}
-               <div class="form-floating">
+               <div class="input-group mb-3">
                   <input type="text" class="form-control rounded-top @error('name') is-invalid @enderror" id="name"
                      name="name" placeholder="Name" required value="{{ old('name') }}">
-                  <label for="name">Name</label>
                   @error('name')
                      <div class="invalid-feedback">
                         {{ $message }}
                      </div>
                   @enderror
-               </div>
-               <div class="form-floating">
-                  <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                     name="username" placeholder="username" required value="{{ old('username') }}">
-                  <label for="username">Username</label>
-                  @error('username')
-                     <div class="invalid-feedback">
-                        {{ $message }}
+                  <div class="input-group-append">
+                     <div class="input-group-text">
+                        <span class="fas fa-user"></span>
                      </div>
-                  @enderror
+                  </div>
                </div>
-               <div class="form-floating">
+
+               <div class="input-group mb-3">
                   <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
                      placeholder="name@example.com" required value="{{ old('email') }}">
-                  <label for="email">Email address</label>
                   @error('email')
                      <div class="invalid-feedback">
                         {{ $message }}
                      </div>
                   @enderror
+                  <div class="input-group-append">
+                     <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                     </div>
+                  </div>
                </div>
-               <div class="form-floating">
+
+
+               <div class="input-group mb-3">
                   <input type="password" class="form-control rounded-bottom @error('password') is-invalid @enderror"
                      id="password" name="password" placeholder="Password" required>
-                  <label for="password">Password</label>
                   @error('password')
                      <div class="invalid-feedback">
                         {{ $message }}
                      </div>
                   @enderror
+                  <div class="input-group-append">
+                     <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                     </div>
+                  </div>
                </div>
-
-               <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Register</button>
+               {{-- <div class="input-group mb-3">
+                  <input type="password" class="form-control" placeholder="Retype password">
+                  <div class="input-group-append">
+                     <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                     </div>
+                  </div>
+               </div> --}}
+               <div class="row justify-content-center my-4">
+                  <div class="col-12">
+                     <button type="submit" class="btn btn-primary btn-block">Register</button>
+                  </div>
+               </div>
             </form>
-            <small class="my-4 d-block text-center">Already registered? <a href="/login" class="text-decoration-none">Login
-                  Here!</a></small>
-         </main>
-      </div>
+
+            <div class="row">
+               <div class="col-lg-12 text-center">
+                  <span>Already
+                     registered? <a href="{{ route('login-page') }}">
+                        Login here!</a></span>
+               </div>
+            </div>
+         </div>
+         <!-- /.form-box -->
+      </div><!-- /.card -->
    </div>
-@endsection
+   <!-- /.register-box -->
+
+   <!-- jQuery -->
+   <script src={{ asset('assets/plugins/jquery/jquery.min.js') }}></script>
+   <!-- Bootstrap 4 -->
+   <script src={{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}></script>
+   <!-- AdminLTE App -->
+   <script src={{ asset('assets/dist/js/adminlte.min.js') }}></script>
+</body>
+
+</html>

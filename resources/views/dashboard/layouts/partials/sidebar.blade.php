@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 control-sidebar-dark" data-controlsidebar-slide="false">
    <!-- Brand Logo -->
    <a href="assets/index3.html" class="brand-link text-decoration-none">
       <span class="brand-text font-weight-light ml-0">{{ config('app.name') }}</span>
@@ -38,161 +38,63 @@
             <!-- Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library -->
             <li class="nav-item">
-               <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
+               <a href="{{ route('dashboard') }}" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-meteor"></i>
                   <p>
                      Dashboard
-                     <span class="right badge badge-info">!</span>
                   </p>
                </a>
             </li>
             <li class="nav-item">
 
-               <a href="/dashboard/students" class="nav-link {{ Request::is('dashboard/students*') ? 'active' : '' }}"">
-                  <i class="            nav-icon fas fa-person-booth"></i>
+               <a href="{{ route('students.index') }}"
+                  class="nav-link {{ Request::is('dashboard/students*') ? 'active' : '' }}">
+                  <i class="                nav-icon fas fa-person-booth"></i>
                   <p>
                      Students
-                     <span class="right badge badge-danger">!</span>
+                     {{-- <span class="right badge badge-danger">!</span> --}}
                   </p>
                </a>
             </li>
-            <li class="nav-header">EXAMPLES</li>
+            <li class="nav-header">Operation</li>
             <li class="nav-item">
-               <a href="../calendar.html" class="nav-link">
+               <a href="{{ route('transaction.index') }}"
+                  class="nav-link {{ Request::is('dashboard/transaction*') ? 'active' : '' }}">
                   <i class="nav-icon far fa-calendar-alt"></i>
                   <p>
-                     Calendar
-                     <span class="badge badge-info right">2</span>
+                     Transaction
                   </p>
                </a>
             </li>
-            <li class="nav-item">
-               <a href="../gallery.html" class="nav-link">
-                  <i class="nav-icon far fa-image"></i>
-                  <p>
-                     Gallery
-                  </p>
-               </a>
-            </li>
+
             <li class="nav-item">
                <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-book"></i>
                   <p>
-                     Pages
+                     Mapping
                      <i class="fas fa-angle-left right"></i>
                   </p>
                </a>
                <ul class="nav nav-treeview">
                   <li class="nav-item">
-                     <a href="../examples/invoice.html" class="nav-link">
+                     <a href="{{ route('map.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Invoice</p>
+                        <p>Class</p>
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a href="../examples/profile.html" class="nav-link">
+                     <a href="{{ route('map.ajaran') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Profile</p>
+                        <p>Ajaran</p>
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a href="../examples/e-commerce.html" class="nav-link">
+                     <a href="{{ route('map.mapel') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>E-commerce</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="../examples/projects.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Projects</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="../examples/project-add.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Project Add</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="../examples/project-edit.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Project Edit</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="../examples/project-detail.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Project Detail</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="../examples/contacts.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Contacts</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="../examples/faq.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>FAQ</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="../examples/contact-us.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Contact us</p>
+                        <p>Mapel</p>
                      </a>
                   </li>
                </ul>
-            </li>
-            <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-search"></i>
-                  <p>
-                     Search
-                     <i class="fas fa-angle-left right"></i>
-                  </p>
-               </a>
-               <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                     <a href="../search/simple.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Simple Search</p>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="../search/enhanced.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Enhanced</p>
-                     </a>
-                  </li>
-               </ul>
-            </li>
-            <li class="nav-header">MISCELLANEOUS</li>
-            <li class="nav-item">
-               <a href="assets/iframe.html" class="nav-link">
-                  <i class="nav-icon fas fa-ellipsis-h"></i>
-                  <p>Tabbed IFrame Plugin</p>
-               </a>
-            </li>
-            <li class="nav-header">LABELS</li>
-            <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p class="text">Important</p>
-               </a>
-            </li>
-            <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Warning</p>
-               </a>
-            </li>
-            <li class="nav-item">
-               <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Informational</p>
-               </a>
             </li>
          </ul>
       </nav>

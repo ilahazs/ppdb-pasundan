@@ -110,16 +110,16 @@
 
                            <div class="form-jalur-pendaftaran col-lg-6">
                               <label for="jalurPendaftaran" class="form-label">Jalur Pendaftaran</label>
-                              <select class="form-select jalur-pendaftaran @error('path_id') is-invalid @enderror"
+                              <select class="form-select jalur-pendaftaran @error('regmethod_id') is-invalid @enderror"
                                  id="jalurPendaftaran" aria-label="jalur pendaftaran" onchange="showForm()"
-                                 name="path_id">
+                                 name="regmethod_id">
                                  <option selected disabled>Jalur Pendaftaran</option>
-                                 @foreach ($paths as $path)
-                                    <option value="{{ $path->id }}">{{ $path->name }}</option>
+                                 @foreach ($regmethods as $regmethod)
+                                    <option value="{{ $regmethod->id }}">{{ $regmethod->name }}</option>
 
                                  @endforeach
                               </select>
-                              @error('path_id')
+                              @error('regmethod_id')
                                  <div class="invalid-feedback">
                                     {{ $message }}
                                  </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PathRegistration;
+use App\Models\RegistrationMethod;
 use App\Models\Religion;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class StudentController extends Controller
             'title' => 'Students',
             'students' => Student::latest()->get(),
             'religions' => Religion::all(),
-            'paths' => PathRegistration::all(),
+            'regmethods' => RegistrationMethod::all(),
             'prevpage' => 'Home',
             'prevlink' => '/dashboard'
         ]);
@@ -37,7 +37,7 @@ class StudentController extends Controller
         return view('dashboard.students.create', [
             'title' => 'Add New Students',
             'religions' => Religion::all(),
-            'paths' => PathRegistration::all(),
+            'regmethods' => RegistrationMethod::all(),
             'prevpage' => 'Students',
             'prevlink' => '/dashboard/students'
         ]);
@@ -58,8 +58,8 @@ class StudentController extends Controller
             'tempat_lahir' => 'required|max:255',
             'tanggal_lahir' => 'required',
             'religion_id' => 'required',
-            'path_id' => 'required',
-            'role_id' => 'required',
+            'regmethod_id' => 'required',
+            // 'role_id' => 'required',
         ]);
 
         Student::create($validatedData);
@@ -94,7 +94,7 @@ class StudentController extends Controller
             'title' => 'Edit Student',
             'student' => $student,
             'religions' => Religion::all(),
-            'paths' => PathRegistration::all(),
+            'regmethods' => RegistrationMethod::all(),
             'prevpage' => 'Students',
             'prevlink' => '/dashboard/students'
         ]);
@@ -116,7 +116,7 @@ class StudentController extends Controller
             'tempat_lahir' => 'required|max:255',
             'tanggal_lahir' => 'required',
             'religion_id' => 'required',
-            'path_id' => 'required',
+            'regmethod_id' => 'required',
             'role_id' => 'required',
         ]);
 
@@ -127,7 +127,7 @@ class StudentController extends Controller
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'religion_id' => $request->religion_id,
-            'path_id' => $request->path_id,
+            'regmethod_id' => $request->regmethod_id,
             'role_id' => $request->role_id,
         ]);
 
@@ -142,7 +142,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        // dd($id);
         Student::destroy($student->id);
-        return redirect('/dashboard/students')->with('status', 'Student <strong>' . $student->nama . '</strong> has been deleted!');
+        return redirect('/dashboard/students')->with('success', 'Student <strong>' . $student->nama . ' </strong> has been deleted!');
     }
 }

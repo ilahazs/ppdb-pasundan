@@ -19,9 +19,15 @@
                      <div class="card-body mx-5">
                         <h3 class="card-title">{{ $student->nama }}</h4>
                            <p class="card-text">Gender: {{ $student->jenis_kelamin }}<br>No. telp:
-                              {{ $student->telp }} <br>Agama: {{ $student->religion->name }} <br>
-                              Jalur: {{ $student->path->name }} <br>TTL: {{ $student->tempat_lahir }},
-                              {{ $student->tanggal_lahir }} <br></p>
+                              {{ $student->telp }}
+                              <br>Status: <span
+                                 class="{{ $student->status == 'accepted' ? 'text-success' : 'text-danger' }}">{{ $student->status }}</span>
+
+                              <br>Agama:
+                              {{ $student->religion->name }} <br>
+                              Jalur: {{ $student->regmethod->name }} <br>TTL: {{ $student->tempat_lahir }},
+                              {{ $student->tanggal_lahir }} <br>
+                           </p>
                            <p class="card-text"><small
                                  class="text-muted">{{ $student->created_at->diffForHumans() }}</small></p>
                      </div>

@@ -55,7 +55,7 @@
                         Jalur Pendaftaran
                      </th>
                      <td class="d-flex justify-content-between px-3" style="border-right: 1px solid">
-                        {{ $student->path->name }}
+                        {{ $student->regmethod->name }}
                      </td>
                   </tr>
                </tbody>

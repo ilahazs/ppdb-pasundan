@@ -14,5 +14,20 @@ class ReligionSeeder extends Seeder
      */
     public function run()
     {
+        Religion::create([
+            'name' => 'Islam',
+        ]);
+        Religion::create([
+            'name' => 'Katholik',
+        ]);
+        Religion::create([
+            'name' => 'Protestan',
+        ]);
+        Religion::create([
+            'name' => 'Hindu',
+        ]);
+        Religion::create([
+            'name' => 'Budha',
+        ]);
     }
 }
