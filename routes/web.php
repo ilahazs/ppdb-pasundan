@@ -7,7 +7,10 @@ use App\Http\Controllers\MappingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TransactionController;
+use App\Models\Kelas;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
+use Yajra\DataTables\DataTables;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,5 +47,19 @@ Route::resource('/dashboard/transaction', TransactionController::class)->middlew
 
 // Mapping data
 Route::get('/dashboard/map', [MappingController::class, 'index'])->name('map.index');
+// Route::get('/dashboard/map', function () {
+//     $users = DataTables::of(Student::query())->make(true);
+//     // dd($students);
+//     return view('dashboard.map.index', [
+//         'title' => 'Kelas Siswa',
+//         'prevpage' => 'Students',
+//         'classes' => Kelas::all(),
+//         'users' => $users,
+//         'prevlink' => '/dashboard/students',
+
+//     ]);
+// })->name('map.index');
+
+
 Route::get('/dashboard/map/ajaran', [MappingController::class, 'ajaran'])->name('map.ajaran');
 Route::get('/dashboard/map/mapel', [MappingController::class, 'mapel'])->name('map.mapel');
