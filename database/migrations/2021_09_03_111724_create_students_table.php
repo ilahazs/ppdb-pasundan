@@ -16,10 +16,11 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->softDeletes();
-            $table->enum('status', ['accepted', 'pending'])->default('pending');
+            // $table->enum('status', ['accepted', 'pending'])->default('pending');
             $table->foreignId('class_id')->nullable();
             $table->foreignId('tahunAjaran_id')->nullable();
             $table->foreignId('religion_id');
+            $table->foreignId('status_id')->default(1);
             $table->foreignId('role_id')->default(1);
             // $table->foreignId('user_id');
             $table->foreignId('regmethod_id');

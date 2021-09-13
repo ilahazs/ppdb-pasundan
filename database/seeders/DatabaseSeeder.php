@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         // User::factory(1)->create();
         Student::factory(20)->create();
-        // StudentAccepted::factory(10)->create();
+        $this->call(StatusSeeder::class);
         $this->call(TahunAjaranSeeder::class);
         $this->call(KelasSeeder::class);
         $this->call(ReligionSeeder::class);

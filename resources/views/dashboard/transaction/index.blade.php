@@ -20,7 +20,7 @@
 
                <ul class="list-group">
                   @foreach ($students as $student)
-                     @if ($student->status == 'pending')
+                     @if ($student->status->name == 'Pending')
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                            {{ $student->nama }}
 
@@ -65,7 +65,7 @@
 
                <ul class="list-group">
                   @foreach ($students as $student)
-                     @if ($student->status == 'accepted')
+                     @if ($student->status->name == 'Accepted')
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                            {{ $student->nama }}
 

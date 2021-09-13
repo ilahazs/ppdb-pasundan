@@ -128,6 +128,7 @@ class StudentController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'religion_id' => $request->religion_id,
             'regmethod_id' => $request->regmethod_id,
+            'status_id' => $request->status_id,
             'role_id' => $request->role_id,
         ]);
 

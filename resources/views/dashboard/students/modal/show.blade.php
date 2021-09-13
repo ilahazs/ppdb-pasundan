@@ -20,8 +20,18 @@
                         <h3 class="card-title">{{ $student->nama }}</h4>
                            <p class="card-text">Gender: {{ $student->jenis_kelamin }}<br>No. telp:
                               {{ $student->telp }}
-                              <br>Status: <span
-                                 class="{{ $student->status == 'accepted' ? 'text-success' : 'text-danger' }}">{{ $student->status }}</span>
+                              <br>Status:
+                              {{-- <span
+                                 class="{{ $student->status->name == 'Accepted' ? 'text-success' : 'text-primary' }}">{{ $student->status->name }}
+                              </span> --}}
+                              <span
+                                 class="@if ($student->status->name == 'Accepted')
+                                 text-success
+                              @elseif ($student->status->name == 'Pending')
+                                 text-primary
+                              @else
+                                 text-danger
+                              @endif">{{ $student->status->name }}</span>
 
                               <br>Agama:
                               {{ $student->religion->name }} <br>

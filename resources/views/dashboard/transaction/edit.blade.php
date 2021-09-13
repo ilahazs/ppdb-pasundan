@@ -12,6 +12,7 @@
                      @method('patch')
                      @csrf
                      <input type="hidden" name="role_id" value="1">
+                     <input type="hidden" name="role_id" value="1">
 
                      <div class="form-item row1 row">
                         <div class="mb-3 col-lg-12">
@@ -108,12 +109,19 @@
                         <div class="form-agama col-lg-4">
                            <label for="status" class="form-label">Status</label>
                            <select class="form-select status @error('status') is-invalid @enderror" id="status"
-                              aria-label="status" name="status">
+                              aria-label="status" name="status_id">
                               <option disabled>Status</option>
-                              <option value="accepted">{{ __('Accepted') }}</option>
-                              <option value="pending">{{ __('Pending') }}</option>
+                              @foreach ($statuses as $status)
+                                 <option value="{{ $status->id }}"
+                                    {{ $student->status_id === $status->id ? 'selected' : '' }}>
+                                    {{ $status->name }}</option>
+                              @endforeach
+
+                              {{-- <option value="2">{{ __('Accepted') }}</option>
+                              <option value="1">{{ __('Pending') }}</option>
+                              <option value="3">{{ __('Rejected') }}</option> --}}
                            </select>
-                           @error('class_id')
+                           @error('status_id')
                               <div class="invalid-feedback">
                                  {{ $message }}
                               </div>

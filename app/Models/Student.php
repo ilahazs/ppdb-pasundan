@@ -14,6 +14,11 @@ class Student extends Model
     protected $with = ['tahunAjaran', 'kelas', 'religion', 'regmethod', 'role'];
     // protected $table = 'siswa';
 
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
+
     public function tahunAjaran()
     {
         return $this->belongsTo(TahunAjaran::class);

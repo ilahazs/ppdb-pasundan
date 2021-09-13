@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use App\Models\RegistrationMethod;
 use App\Models\Religion;
+use App\Models\Status;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -73,6 +74,7 @@ class TransactionController extends Controller
             'title' => 'Edit Student',
             'student' => Student::find($id),
             'religions' => Religion::all(),
+            'statuses' => Status::all(),
             'regmethods' => RegistrationMethod::all(),
             'classes' => Kelas::all(),
             'prevpage' => 'Transaction',
@@ -99,7 +101,7 @@ class TransactionController extends Controller
             'regmethod_id' => 'required',
             'role_id' => 'required',
             // 'class_id' => 'required',
-            'status' => 'required',
+            'status_id' => 'required',
         ]);
 
         Student::where('id', $id)->update([
@@ -112,10 +114,11 @@ class TransactionController extends Controller
             'regmethod_id' => $request->regmethod_id,
             'role_id' => $request->role_id,
             'class_id' => $request->class_id,
-            'status' => $request->status,
+            'status_id' => $request->status_id,
         ]);
-
-        return redirect('/dashboard/transaction')->with('status', 'Data student <strong>' . Student::find($id)->nama . '</strong> has been changed!');
+        $flashDetail = ($request->has('message') ? 'moved!' : 'changed!');
+        return redirect('/dashboard/transaction')->with('status', 'Data student <strong>' . Student::find($id)->nama .
+            '</strong> has been ' . $flashDetail);
     }
 
     public function move(Request $request, $id)

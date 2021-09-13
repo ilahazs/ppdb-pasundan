@@ -7,5 +7,5 @@
 <input type="hidden" name="class_id" value="{{ $student->class_id }}">
 <input type="hidden" name="role_id" value="{{ $student->role_id }}">
 <input type="hidden" name="regmethod_id" value="{{ $student->regmethod_id }}">
-<input type="hidden" name="status" value="accepted">
-<input type="hidden" name="message" value="Moved">
+<input type="hidden" name="status_id" value="2">
+<input type="hidden" name="message" value="moved">
