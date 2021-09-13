@@ -27,7 +27,7 @@ class MappingController extends Controller
         //         ->make(true);
         // }
         // return view('dashboard.map.index');
-        return view('dashboard.map.old-index', [
+        return view('dashboard.map.index', [
             'title' => 'Daftar Siswa Kelas',
             'classes' => Kelas::all(),
             'students' => Student::latest()->get(),
