@@ -67,9 +67,16 @@
                   @foreach ($students as $student)
                      @if ($student->status->name == 'Accepted')
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                           {{ $student->nama }}
+                           <span>{{ $student->nama }}
+                              @if ($student->class_id)
+                                 <a href="#"
+                                    class="ml-3 badge bg-primary text-decoration-none">{{ $student->class->name }}</a>
+                              @endif
+
+                           </span>
 
                            <div class="justify-content-end">
+
                               <a href="#" class="badge bg-info" data-bs-toggle="modal"
                                  data-bs-target="#ModalShow{{ $student->id }}"><i class="far fa-eye"></i></a>
                               @include('dashboard.students.modal.show')
