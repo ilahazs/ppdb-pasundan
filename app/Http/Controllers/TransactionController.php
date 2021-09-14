@@ -18,10 +18,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        // dd(Student::latest()->where('status', 'accepted')->get());
         return view('dashboard/transaction/index', [
             'title' => 'Transaction Student',
             'students' => Student::latest()->get(),
+            'newStudents' => Student::orderBy('updated_at', 'desc')->where('status_id', 2)->get(),
             // 'religions' => Religion::all(),
             // 'regmethods' => RegistrationMethod::all(),
             'prevpage' => 'Students',

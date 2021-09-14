@@ -64,27 +64,34 @@
             <h4 class="mt-2 mb-3">{{ __('Daftar Siswa Diterima') }}</h3>
 
                <ul class="list-group">
-                  @foreach ($students as $student)
-                     @if ($student->status->name == 'Accepted')
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                           <span>{{ $student->nama }}
-                              @if ($student->class_id)
-                                 <a href="#"
-                                    class="ml-3 badge bg-primary text-decoration-none">{{ $student->class->name }}</a>
-                              @endif
+                  {{-- @php
+                     $sorted = DB::table('students')
+                         ->orderBy('updated_at', 'desc')
+                         ->where('status_id', 2)
+                         ->with('class', 'status')
+                         ->get();
+                  @endphp --}}
+                  @foreach ($sorted as $student)
+                     {{-- @if ($student->status->name == 'Accepted') --}}
+                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>{{ $student->nama }}
+                           @if ($student->class_id)
+                              <a href="#"
+                                 class="ml-3 badge bg-primary text-decoration-none">{{ $student->class->name }}</a>
+                           @endif
 
-                           </span>
+                        </span>
 
-                           <div class="justify-content-end">
+                        <div class="justify-content-end">
 
-                              <a href="#" class="badge bg-info" data-bs-toggle="modal"
-                                 data-bs-target="#ModalShow{{ $student->id }}"><i class="far fa-eye"></i></a>
-                              @include('dashboard.students.modal.show')
-                              <a href="{{ route('transaction.edit', $student->id) }}" class="badge bg-success">
-                                 <i class="far fa-edit"></i></a>
-                           </div>
-                        </li>
-                     @endif
+                           <a href="#" class="badge bg-info" data-bs-toggle="modal"
+                              data-bs-target="#ModalShow{{ $student->id }}"><i class="far fa-eye"></i></a>
+                           @include('dashboard.students.modal.show')
+                           <a href="{{ route('transaction.edit', $student->id) }}" class="badge bg-success">
+                              <i class="far fa-edit"></i></a>
+                        </div>
+                     </li>
+                     {{-- @endif --}}
                   @endforeach
                </ul>
          </div>
