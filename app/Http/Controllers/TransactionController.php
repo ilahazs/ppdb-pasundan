@@ -22,8 +22,6 @@ class TransactionController extends Controller
             'title' => 'Transaction Student',
             'students' => Student::latest()->get(),
             'newStudents' => Student::orderBy('updated_at', 'desc')->where('status_id', 2)->get(),
-            // 'religions' => Religion::all(),
-            // 'regmethods' => RegistrationMethod::all(),
             'prevpage' => 'Students',
             'prevlink' => '/dashboard/students'
         ]);

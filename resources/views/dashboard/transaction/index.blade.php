@@ -71,7 +71,7 @@
                          ->with('class', 'status')
                          ->get();
                   @endphp --}}
-                  @foreach ($sorted as $student)
+                  @foreach ($newStudents as $student)
                      {{-- @if ($student->status->name == 'Accepted') --}}
                      <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>{{ $student->nama }}
