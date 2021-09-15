@@ -18,6 +18,7 @@
                <div class="form-kelas col-lg-2 mb-3">
                   <label for="class_id" class="form-label">Kelas</label>
                   <select class="form-select class_id" id="class_id" aria-label="class_id" name="class_id">
+                     <option value="all" selected>All</option>
                      @foreach ($classes as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
                      @endforeach
@@ -29,27 +30,38 @@
                <table class="table table-bordered">
                   <thead>
                      <tr>
-                        <th scope="col">#</th>
+                        <th scope="col" class="bg-white">#</th>
                         <th scope="col">Nama</th>
-                        <th scope="col" width="130px">Jenis Kelamin</th>
+                        <th scope="col" width="130px" class="bg-white">Jenis Kelamin</th>
                         <th scope="col">Alamat</th>
-                        <th scope="col">Tangal Lahir</th>
+                        <th scope="col" class="bg-white">Tangal Lahir</th>
                         <th scope="col">Usia</th>
+                        <th scope="col" class="text-center">Kelas</th>
                      </tr>
                   </thead>
                   <tbody>
                      @foreach ($students as $student)
-                        @if ($student->class_id == 1)
+                        @if ($student->class_id && ($student->status->name = 'Accepted'))
 
                            <tr>
-                              <th scope="row">{{ $loop->iteration }}</th>
+                              <th scope="row" class="bg-white">{{ $loop->iteration }}</th>
                               <td>{{ $student->nama }}</td>
                               <td
-                                 class="{{ $student->jenis_kelamin == 'L' ? 'text-primary' : 'text-danger' }} text-center">
+                                 class="{{ $student->jenis_kelamin == 'L' ? 'text-primary' : 'text-danger' }} text-center bg-white">
                                  {{ $student->jenis_kelamin }}</td>
                               <td>{{ $student->tempat_lahir }}</td>
-                              <td>{{ $student->tanggal_lahir }}</td>
+                              <td class="bg-white">{{ $student->tanggal_lahir }}</td>
                               <td>{{ $student->usia . ' tahun' }}</td>
+                              <td class="d-flex justify-content-center"><span
+                                    class="badge @if ($student->class_id == 1)
+                                       bg-primary
+                                       @elseif($student->class_id == 2)
+                                       bg-success
+                                       @else
+                                       bg-danger
+                                    @endif
+                                    ">{{ $student->class->name }}</span>
+                              </td>
 
                            </tr>
                         @endif

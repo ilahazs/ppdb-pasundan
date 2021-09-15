@@ -44,18 +44,7 @@ Route::resource('/dashboard/transaction', TransactionController::class)->middlew
 
 // Mapping data
 Route::get('/dashboard/map', [MappingController::class, 'index'])->name('map.index');
-// Route::get('/dashboard/map', function () {
-//     $users = DataTables::of(Student::query())->make(true);
-//     // dd($students);
-//     return view('dashboard.map.index', [
-//         'title' => 'Kelas Siswa',
-//         'prevpage' => 'Students',
-//         'classes' => Kelas::all(),
-//         'users' => $users,
-//         'prevlink' => '/dashboard/students',
-
-//     ]);
-// })->name('map.index');
+Route::get('/dashhboard/map/list', [MappingController::class, 'getStudents'])->name('mapstudents.list');
 
 
 Route::get('/dashboard/map/ajaran', [MappingController::class, 'ajaran'])->name('map.ajaran');
