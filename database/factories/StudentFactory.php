@@ -25,12 +25,12 @@ class StudentFactory extends Factory
             'nama' => $this->faker->name(),
             // 'kelas' => $this->faker->randomElesment(['1A', '1B', '1C']),
             'telp' => $this->faker->unique()->phoneNumber(),
-            'jenis_kelamin' => 'perempuan',
+            'jenis_kelamin' => $this->faker->randomElement(['L', 'P']),
             'tempat_lahir' => $this->faker->city(),
             'tanggal_lahir' => $this->faker->date(),
+            'usia' => $this->faker->randomElement([16, 17, 18, 19]),
             'religion_id' => mt_rand(1, 5),
             // 'status' => $this->faker->randomElement(['accepted', 'pending']),
-            // 'role_id' => 1,
             'regmethod_id' => mt_rand(1, 3),
         ];
     }

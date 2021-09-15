@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\RegistrationMethod;
 use App\Models\Religion;
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -51,7 +52,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|max:255',
             'telp' => ['required', 'max:30', 'unique:students', 'min:10'],
             'jenis_kelamin' => 'required',
@@ -62,8 +63,20 @@ class StudentController extends Controller
             // 'role_id' => 'required',
         ]);
 
-        Student::create($validatedData);
-        return redirect('/dashboard/students')->with('status', 'New student <strong>' . $request->nama . '</strong> has been added!');
+        $dob = Carbon::parse($request['tanggal_lahir']);
+        $usia = $dob->age;
+        // Student::create($validatedData, ['usia' => $usia]);
+        Student::create([
+            'nama' => $request->nama,
+            'telp' => $request->telp,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'religion_id' => $request->religion_id,
+            'regmethod_id' => $request->regmethod_id,
+            'usia' => $usia
+        ]);
+        return redirect('/dashboard/students')->with('success', 'New student <strong>' . $request->nama . '</strong> has been added!');
     }
 
     /**
@@ -117,7 +130,7 @@ class StudentController extends Controller
             'tanggal_lahir' => 'required',
             'religion_id' => 'required',
             'regmethod_id' => 'required',
-            'role_id' => 'required',
+            // 'role_id' => 'required',
         ]);
 
         Student::where('id', $student->id)->update([
@@ -129,7 +142,7 @@ class StudentController extends Controller
             'religion_id' => $request->religion_id,
             'regmethod_id' => $request->regmethod_id,
             'status_id' => $request->status_id,
-            'role_id' => $request->role_id,
+            // 'role_id' => $request->role_id,
         ]);
 
         return redirect('/dashboard/students')->with('status', 'Data student <strong>' . $student->nama . '</strong> has been changed!');

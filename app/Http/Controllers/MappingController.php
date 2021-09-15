@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\Builder\Stub;
 use Yajra\DataTables\DataTables;
@@ -27,6 +28,8 @@ class MappingController extends Controller
         //         ->make(true);
         // }
         // return view('dashboard.map.index');
+        // $dob = Carbon::parse($request['tanggal_lahir']);
+        // $age = $dob->age;
         return view('dashboard.map.index', [
             'title' => 'Daftar Siswa Kelas',
             'classes' => Kelas::all(),

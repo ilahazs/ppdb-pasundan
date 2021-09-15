@@ -97,9 +97,9 @@ class TransactionController extends Controller
             'tanggal_lahir' => 'required',
             'religion_id' => 'required',
             'regmethod_id' => 'required',
-            'role_id' => 'required',
+            // 'role_id' => 'required',
             // 'class_id' => 'required',
-            'status_id' => 'required',
+            // 'status_id' => 'required',
         ]);
 
         Student::where('id', $id)->update([
@@ -110,21 +110,12 @@ class TransactionController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'religion_id' => $request->religion_id,
             'regmethod_id' => $request->regmethod_id,
-            'role_id' => $request->role_id,
             'class_id' => $request->class_id,
             'status_id' => $request->status_id,
         ]);
         $flashDetail = ($request->has('message') ? 'moved!' : 'changed!');
         return redirect('/dashboard/transaction')->with('status', 'Data student <strong>' . Student::find($id)->nama .
             '</strong> has been ' . $flashDetail);
-    }
-
-    public function move(Request $request, $id)
-    {
-        Student::where('id', $id)->update([
-            'status' => $request->status,
-        ]);
-        return redirect('/dashboard/transaction')->with('status', 'Data student <strong>' . Student::find($id)->nama . '</strong> has been moved!');
     }
 
     /**

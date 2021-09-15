@@ -25,32 +25,39 @@
                </div>
             </div>
             <ul class="list-group">
-               @foreach ($students as $student)
-                  @if ($student->class_id == 1)
-                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ $student->nama }}
-                        <div class="justify-content-end">
-                           <a href="#" class="badge bg-info" data-bs-toggle="modal"
-                              data-bs-target="#ModalShow{{ $student->id }}"><i class="far fa-eye"></i></a>
-                           {{-- <a href="#" class="badge bg-success" data-bs-toggle="modal"
-                           data-bs-target="#ModalEdit{{ $student->id }}"><i class="far fa-edit "></i></a> --}}
-                           <a href="/dashboard/students/{{ $student->id }}/edit" class="badge bg-success">
-                              <i class="far fa-edit"></i></a>
-                           {{-- fas fa-user-edit --}}
-                           <form action="/dashboard/students/{{ $student->id }}" method="post" class="d-inline"
-                              onsubmit="return confirm('Yakin hapus data ini?')">
-                              @method('delete')
-                              @csrf
-                              <button type="submit" class="badge bg-danger" id="show_confirm" data-toggle="tooltip"
-                                 title="Delete">
-                                 <i class="far fa-trash-alt"></i>
-                              </button>
-                           </form>
-                        </div>
-                     </li>
-                     @include('dashboard.students.modal.show')
-                  @endif
-               @endforeach
+
+               <table class="table table-bordered">
+                  <thead>
+                     <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col" width="130px">Jenis Kelamin</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Tangal Lahir</th>
+                        <th scope="col">Usia</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     @foreach ($students as $student)
+                        @if ($student->class_id == 1)
+
+                           <tr>
+                              <th scope="row">{{ $loop->iteration }}</th>
+                              <td>{{ $student->nama }}</td>
+                              <td
+                                 class="{{ $student->jenis_kelamin == 'L' ? 'text-primary' : 'text-danger' }} text-center">
+                                 {{ $student->jenis_kelamin }}</td>
+                              <td>{{ $student->tempat_lahir }}</td>
+                              <td>{{ $student->tanggal_lahir }}</td>
+                              <td>{{ $student->usia . ' tahun' }}</td>
+
+                           </tr>
+                        @endif
+
+                     @endforeach
+
+                  </tbody>
+               </table>
             </ul>
 
 

@@ -145,7 +145,7 @@
                      </div>
 
                      <div class="justify-content-end d-flex mt-5">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
                      </div>
                   </form>
                </div>

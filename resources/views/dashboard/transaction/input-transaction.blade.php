@@ -5,7 +5,6 @@
 <input type="hidden" name="tempat_lahir" value="{{ $student->tempat_lahir }}">
 <input type="hidden" name="religion_id" value="{{ $student->religion_id }}">
 <input type="hidden" name="class_id" value="{{ $student->class_id }}">
-<input type="hidden" name="role_id" value="{{ $student->role_id }}">
 <input type="hidden" name="regmethod_id" value="{{ $student->regmethod_id }}">
 <input type="hidden" name="status_id" value="2">
 <input type="hidden" name="message" value="moved">

@@ -11,7 +11,7 @@ class Student extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
-    protected $with = ['tahunAjaran', 'class', 'religion', 'regmethod', 'role'];
+    protected $with = ['tahunAjaran', 'class', 'religion', 'regmethod'];
     // protected $table = 'siswa';
 
     public function status()
@@ -39,17 +39,8 @@ class Student extends Model
         return $this->belongsTo(RegistrationMethod::class);
     }
 
-    public function role()
+    public function user()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(User::class);
     }
-
-    // public function transaction()
-    // {
-    // }
-
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
 }

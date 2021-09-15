@@ -28,6 +28,7 @@ class UserFactory extends Factory
             // 'email' => $this->faker->unique()->safeEmail(),
             'name' => 'Ilham Prabu Zaky S',
             // 'username' => 'ilhamprabuzakys',
+            'role' => $this->faker->randomElement(['guest', 'student', 'teacher', 'admin']),
             'email' => 'ilhamprabuzakys@gmail.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

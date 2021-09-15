@@ -15,10 +15,10 @@
             @endif
 
             <div class="d-flex justify-content-end">
-               <a href="#" class="badge bg-primary mb-3" data-bs-toggle="modal" data-bs-target="#ModalCreate"><i
+               {{-- <a href="#" class="badge bg-primary mb-3" data-bs-toggle="modal" data-bs-target="#ModalCreate"><i
                      class="fas fa-plus"></i></a>
-               @include('dashboard.students.modal.create')
-               {{-- <a href="/dashboard/students/create" class="badge bg-primary mb-3"><i class="fas fa-plus"></i></a> --}}
+               @include('dashboard.students.modal.create') --}}
+               <a href="{{ route('students.create') }}" class="badge bg-primary mb-3"><i class="fas fa-plus"></i></a>
 
             </div>
             <ul class="list-group">

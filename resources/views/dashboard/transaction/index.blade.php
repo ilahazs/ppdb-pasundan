@@ -44,7 +44,6 @@
                                  @method('patch')
                                  @csrf
                                  @include('dashboard.transaction.input-transaction')
-                                 {{-- <input type="hidden" name="status" value="accepted"> --}}
                                  <button type="submit" class="badge bg-success" id="show_confirm" data-toggle="tooltip"
                                     title="Move">
                                     <i class="fas fa-arrow-right"></i>
@@ -72,7 +71,6 @@
                          ->get();
                   @endphp --}}
                   @foreach ($newStudents as $student)
-                     {{-- @if ($student->status->name == 'Accepted') --}}
                      <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>{{ $student->nama }}
                            @if ($student->class_id)
@@ -91,7 +89,6 @@
                               <i class="far fa-edit"></i></a>
                         </div>
                      </li>
-                     {{-- @endif --}}
                   @endforeach
                </ul>
          </div>

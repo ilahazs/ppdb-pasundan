@@ -1,14 +1,11 @@
 <?php
 
 use App\Http\Controllers\BasicController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MappingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TransactionController;
-use App\Models\Kelas;
-use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 use Yajra\DataTables\DataTables;
 

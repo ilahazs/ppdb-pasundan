@@ -40,8 +40,8 @@
                            <select class="form-select jenis-kelamin @error('jenis_kelamin') is-invalid @enderror"
                               id="jenisKelamin" aria-label="jenis kelamin" name="jenis_kelamin">
                               <option selected disabled>Jenis Kelamin</option>
-                              <option value="Laki-laki">Laki - Laki</option>
-                              <option value="Perempuan">Perempuan</option>
+                              <option value="L">Laki - Laki</option>
+                              <option value="P">Perempuan</option>
                            </select>
                            @error('jenis_kelamin')
                               <div class="invalid-feedback">

@@ -11,8 +11,6 @@
                      enctype="multipart/form-data">
                      @method('patch')
                      @csrf
-                     <input type="hidden" name="role_id" value="1">
-                     <input type="hidden" name="role_id" value="1">
 
                      <div class="form-item row1 row">
                         <div class="mb-3 col-lg-12">
@@ -44,10 +42,10 @@
                            <select class="form-select jenis-kelamin @error('jenis_kelamin') is-invalid @enderror"
                               id="jenisKelamin" aria-label="jenis kelamin" name="jenis_kelamin">
                               <option disabled>Jenis Kelamin</option>
-                              <option value="Laki-laki" {{ $student->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>
+                              <option value="L" {{ $student->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>
                                  Laki - Laki
                               </option>
-                              <option value="Perempuan" {{ $student->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>
+                              <option value="P" {{ $student->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>
                                  Perempuan
                               </option>
                            </select>
@@ -113,7 +111,7 @@
                               <option disabled>Status</option>
                               @foreach ($statuses as $status)
                                  <option value="{{ $status->id }}"
-                                    {{ $student->status_id === $status->id ? 'selected' : '' }}>
+                                    {{ $student->status_id == $status->id ? 'selected' : '' }}>
                                     {{ $status->name }}</option>
                               @endforeach
 

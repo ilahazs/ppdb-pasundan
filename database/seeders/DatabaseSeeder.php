@@ -24,6 +24,5 @@ class DatabaseSeeder extends Seeder
         $this->call(KelasSeeder::class);
         $this->call(ReligionSeeder::class);
         $this->call(RegistrationMethodSeeder::class);
-        $this->call(RoleSeeder::class);
     }
 }

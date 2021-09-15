@@ -22,11 +22,11 @@ class CreateStudentsTable extends Migration
             $table->foreignId('religion_id');
             $table->foreignId('status_id')->default(1);
             $table->foreignId('role_id')->default(1);
-            // $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('regmethod_id');
             $table->string('nama');
             $table->string('telp', 30)->unique();
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->timestamps();
